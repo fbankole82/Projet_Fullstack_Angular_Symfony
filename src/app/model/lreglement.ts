@@ -6,4 +6,6 @@ export class Lreglement {
     echeance  !: any;
     datreg  !: any;
     montant!: number;
+    code !: string;
+    qte !: number;
 }

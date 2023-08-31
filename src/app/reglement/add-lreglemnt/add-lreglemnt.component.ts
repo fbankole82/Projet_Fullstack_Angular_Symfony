@@ -20,6 +20,8 @@ export class AddLreglemntComponent implements OnInit {
     wtotht = 0;
     wtottva = 0;
     wtotttc = 0;
+ 
+    
     constructor( public service: ReglementService,private toastr :ToastrService,
       @Inject(MAT_DIALOG_DATA) public data: any,
           public dialogRef:MatDialogRef<AddLreglemntComponent>,

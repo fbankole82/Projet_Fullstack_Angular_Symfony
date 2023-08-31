@@ -6,6 +6,7 @@ import { Component, OnInit,Inject } from '@angular/core';
   import { FormBuilder } from '@angular/forms';
   import {MatDialog, MatDialogConfig,MatDialogRef,MAT_DIALOG_DATA  } from '@angular/material/dialog';
   import { AddRdvComponent } from '../../rdv/add-rdv/add-rdv.component';
+  import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-list-rdv',

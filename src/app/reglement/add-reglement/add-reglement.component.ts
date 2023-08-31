@@ -22,6 +22,8 @@ export class AddReglementComponent implements OnInit {
     wtotht = 0;
     wtottva = 0;
     wtotttc = 0;
+     formData!: FormGroup;
+    
     constructor( public service: ReglementService,private toastr :ToastrService,
       @Inject(MAT_DIALOG_DATA) public data: any,
           public dialogRef:MatDialogRef<AddLreglemntComponent>,
@@ -29,20 +31,18 @@ export class AddReglementComponent implements OnInit {
           get f() { return this.service.formData.controls; }
          
   
-    ngOnInit() {
-      if(this.data.lcommandeIndex==null)
-      {
-        this.InfoForm();
-      }
-      else 
-      {
-       this.service.formData =this.fb.group(Object.assign({},this.service.list[this.data.lcommandeIndex]));
-      }
-     this.service.getAll().subscribe(
-        response =>{this.service.list= response;}
-       );
-  }
-  
+          ngOnInit() {
+            if (this.data.lcommandeIndex == null) {
+              this.InfoForm();
+            } else {
+              this.service.formData = this.fb.group(Object.assign({}, this.service.list[this.data.lcommandeIndex]));
+            }
+            this.service.getAll().subscribe(
+              response => {
+                this.service.list = response;
+              }
+            );
+          }
   
   InfoForm() {
     this.service.formData = this.fb.group({
@@ -64,39 +64,41 @@ export class AddReglementComponent implements OnInit {
   
  
   
-  cal(){
-   
-    this.wtotht =  parseFloat((this.formData.value.qte * this.formData.value.pu).toFixed(3));
-    this.wtottva = parseFloat(((this.wtotht * this.formData.value.tva)*0.01).toFixed(3)); 
-    this.wtotttc = parseFloat((this.wtotht + this.wtottva).toFixed(3));
-    this.f['totht'].setValue(this.wtotht);
-    this.f['tottva'].setValue(this.wtottva);
-    this.f['totttc'].setValue(this.wtotttc);
-  }
-  
-  onSubmit() {
-    if(this.data.lcommandeIndex==null)
-    {
-      this.service.list.push(this.service.formData.value);
+    cal() {
+      this.wtotht = parseFloat((this.formData.value.qte * this.formData.value.pu).toFixed(3));
+      this.wtottva = parseFloat(((this.wtotht * this.formData.value.tva) * 0.01).toFixed(3));
+      this.wtotttc = parseFloat((this.wtotht + this.wtottva).toFixed(3));
+      this.f['totht'].setValue(this.wtotht);
+      this.f['tottva'].setValue(this.wtottva);
+      this.f['totttc'].setValue(this.wtotttc);
+    }
+    onSubmit() {
+      if (this.data.lcommandeIndex == null) {
+        this.service.list.push(this.service.formData.value);
+        this.dialogRef.close();
+      } else {
+        this.service.list[this.data.lcommandeIndex] = this.service.formData.value;
+      }
       this.dialogRef.close();
     }
-    else
-  {
-    this.service.list[this.data.lcommandeIndex] = this.service.formData.value;
-  }
-  this.dialogRef.close();
-  }
   
-  validateForm(formData:Lreglement{
-    this.isValid=true;
-    if(formData.code =='')
-      this.isValid=false;
-      else if(formData.qte ==0)
-      this.isValid=false;
+    validateForm(formData: Lreglement) {
+      this.isValid = true;
+      if (formData.code == '') {
+        this.isValid = false;
+      } else if (formData.qte == 0) {
+        this.isValid = false;
+      }
       return this.isValid;
-  }
-  }
+    }
+    AddData(index: number | null, mode: number) {
+      // Logique pour ajouter des données
+    }
   
+    onDelete(item: any, id: number, index: number) {
+      // Logique de suppression
+    }
+  }
 
 
 

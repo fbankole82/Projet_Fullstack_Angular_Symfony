@@ -33,7 +33,7 @@ import { HttpClientModule} from '@angular/common/http';
 
 import { MatDialogModule,MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatToolbarModule,MatToolbar} from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AddAssureurComponent } from './assureur/add-assureur/add-assureur.component';
@@ -51,6 +51,9 @@ import { AddInscriptionComponent } from './inscription/add-inscription/add-inscr
 import { ListInscriptionComponent } from './inscription/list-inscription/list-inscription.component';
 import { AddLreglemntComponent } from './reglement/add-lreglemnt/add-lreglemnt.component';
 import { SuiviComponent } from './patient/suivi/suivi.component';
+
+import 'chart.js';
+
 const MATERIAL_MODULES = [MatToolbarModule,
   MatIconModule
 ];

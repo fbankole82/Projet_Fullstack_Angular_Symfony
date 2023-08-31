@@ -20,6 +20,7 @@ export class ListMedicamentComponent implements OnInit {
 
   medicament !: Medicament;
   p: number = 1;
+  
 
   codef: number = 0;
   control: FormControl = new FormControl('');
@@ -89,5 +90,7 @@ export class ListMedicamentComponent implements OnInit {
 
     this.matDialog.open(AddMedicamentComponent, dialogConfig);
   }
-
+  pageChanged(event: number) {
+    this.p = event;
+  }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { DataService } from '../../service/data.service';
+import { Chart } from 'chart.js';
+
 
 @Component({
   selector: 'app-bar-chart',
